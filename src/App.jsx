@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as Sentry from '@sentry/react';
-import PerformanceDemo from './PerformanceMonitoring';
+import BookList from './FetchBooks';
 
 function App() {
   const [reportName, setReportName] = useState('');
@@ -27,9 +27,9 @@ function App() {
         onChange={(e) => setReportName(e.target.value)}
       />
       <button onClick={handleExport}>Export Report</button>
-      <PerformanceDemo />
+      <BookList />
     </div>
   );
 }
 
-export default Sentry.withProfiler(App);
+export default App;
