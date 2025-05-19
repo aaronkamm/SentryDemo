@@ -5,22 +5,24 @@ import App from './App.jsx';
 
 Sentry.init({
   dsn: 'https://b0eb2c60728c8e42287fb1c3a9b94b8f@o4509318659244032.ingest.us.sentry.io/4509318669271040',
-  replaysSessionSampleRate: 1.0,
-  replaysOnErrorSampleRate: 1.0,
-  tracesSampleRate: 1.0,
-  environment: import.meta.env.VITE_SENTRY_ENV || 'development',
-  // Setting this option to true will send default PII data to Sentry.
-  // For example, automatic IP address collection on events
-  sendDefaultPii: true,
   integrations: [
     Sentry.browserTracingIntegration(),
+    Sentry.browserProfilingIntegration(),
     Sentry.replayIntegration({
       // Additional SDK configuration goes in here, for example:
       maskAllText: false,
-      blockAllMedia: false,
-      tracePropagationTargets: ['localhost']
+      blockAllMedia: false
     })
-  ]
+  ],
+  replaysSessionSampleRate: 1.0,
+  replaysOnErrorSampleRate: 1.0,
+  tracesSampleRate: 1.0,
+  profilesSampleRate: 1.0,
+  tracePropagationTargets: [/^http:\/\/localhost:\d+/],
+  environment: import.meta.env.VITE_SENTRY_ENV || 'development',
+  // Setting this option to true will send default PII data to Sentry.
+  // For example, automatic IP address collection on events
+  sendDefaultPii: true
 });
 
 createRoot(document.getElementById('root'), {
