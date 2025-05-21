@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import * as Sentry from '@sentry/react';
+import './BookList.css';
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -20,13 +21,6 @@ const BookList = () => {
       console.error('Fetch books error:', error);
     }
   };
-  // const filteredBooks = books
-  //   .filter((book) => (filter === 'all' ? true : book.format.includes(filter)))
-  //   .sort((a, b) => {
-  //     if (sortBy === 'title') return a.title.localeCompare(b.title);
-  //     return (a.rating || 0) - (b.rating || 0);
-  //   });
-
   const computeAverageRating = useCallback(() => {
     try {
       let sum = 0;
@@ -36,7 +30,6 @@ const BookList = () => {
         }
       }
       const avg = books.length ? sum / (books.length * 1000) : 0;
-      console.log(books, 'BOOKS', sum, 'SUM');
       setAvgRating(avg);
     } catch (error) {
       Sentry.captureException(error);

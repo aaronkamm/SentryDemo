@@ -1,0 +1,146 @@
+/* Container for the entire component */
+.book-list {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Heading */
+.book-list h2 {
+  font-size: 1.75rem;
+  color: #1a202c;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Filter and sort controls */
+.book-list > div:first-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.book-list label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.book-list select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: #f7fafc;
+  font-size: 0.95rem;
+  color: #2d3748;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-list select:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+/* Average rating */
+.book-list p {
+  font-size: 1rem;
+  color: #4a5568;
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+/* Scrollable book list container */
+.book-list > div[style*='overflow'] {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #edf2f7;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  padding: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+/* Custom scrollbar for WebKit browsers */
+.book-list > div[style*='overflow']::-webkit-scrollbar {
+  width: 8px;
+}
+
+.book-list > div[style*='overflow']::-webkit-scrollbar-track {
+  background: #f7fafc;
+  border-radius: 4px;
+}
+
+.book-list > div[style*='overflow']::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+/* Book item */
+.book-item {
+  padding: 1rem;
+  margin: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #edf2f7;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-item h3 {
+  font-size: 1.1rem;
+  color: #1a202c;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.book-item p {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0.25rem 0;
+  text-align: left;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .book-list {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .book-list h2 {
+    font-size: 1.5rem;
+  }
+
+  .book-list > div:first-of-type {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .book-list select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .book-item {
+    margin: 0.5rem 0;
+  }
+}
