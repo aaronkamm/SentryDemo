@@ -1,35 +1,22 @@
-import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import * as Sentry from '@sentry/react';
-import BookList from './FetchBooks';
+import BookList from './BookList';
+import ReportExport from './ReportExport';
+import './App.css';
+
+const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
 
 function App() {
-  const [reportName, setReportName] = useState('');
-
-  const handleExport = () => {
-    try {
-      if (!reportName) {
-        throw new Error('Missing report name');
-      }
-      // Simulate export
-      alert(`Exporting ${reportName}`);
-    } catch (err) {
-      Sentry.captureException(err);
-      throw err; // Re-throw to show unhandled error
-    }
-  };
-
   return (
-    <div className="container">
-      <h1>Enterprise Reporting Dashboard</h1>
-      <input
-        placeholder="Enter report name"
-        value={reportName}
-        onChange={(e) => setReportName(e.target.value)}
-      />
-      <button onClick={handleExport}>Export Report</button>
+    // <SentryRoutes>
+    //   <Route path="/" element={<ReportExport />} />
+    //   <Route path="/book-list" element={<BookList />} />
+    // </SentryRoutes>
+    <div>
+      <ReportExport />
       <BookList />
     </div>
   );
 }
 
-export default App;
+export default Sentry.withProfiler(App);
