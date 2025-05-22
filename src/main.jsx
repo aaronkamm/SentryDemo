@@ -1,27 +1,27 @@
-import { StrictMode } from 'react';
+import { StrictMode, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-// import {
-//   BrowserRouter,
-//   Routes,
-//   useLocation,
-//   useNavigationType,
-//   createRoutesFromChildren,
-//   matchRoutes
-// } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  useLocation,
+  useNavigationType,
+  createRoutesFromChildren,
+  matchRoutes
+} from 'react-router-dom';
 import * as Sentry from '@sentry/react';
 import App from './App.jsx';
 
 Sentry.init({
   dsn: 'https://b0eb2c60728c8e42287fb1c3a9b94b8f@o4509318659244032.ingest.us.sentry.io/4509318669271040',
+  debug: 'true',
   integrations: [
-    // Sentry.reactRouterV6BrowserTracingIntegration({
-    //   useEffect: useEffect,
-    //   useLocation,
-    //   useNavigationType,
-    //   createRoutesFromChildren,
-    //   matchRoutes
-    // }),
-    Sentry.browserTracingIntegration,
+    Sentry.reactRouterV6BrowserTracingIntegration({
+      useEffect: useEffect,
+      useLocation,
+      useNavigationType,
+      createRoutesFromChildren,
+      matchRoutes
+    }),
     Sentry.browserProfilingIntegration(),
     Sentry.replayIntegration({
       // Additional SDK configuration goes in here, for example:
@@ -50,8 +50,8 @@ createRoot(document.getElementById('root'), {
   onRecoverableError: Sentry.reactErrorHandler()
 }).render(
   <StrictMode>
-    {/* <BrowserRouter basename="/"> */}
-    <App />
-    {/* </BrowserRouter> */}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
 );
