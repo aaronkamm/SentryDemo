@@ -20,7 +20,7 @@ function ReportExport() {
     <div className="container">
       <h1>Enterprise Reporting Dashboard</h1>
       <div className="input-container">
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <input
             placeholder="Enter report name"
             value={reportName}
