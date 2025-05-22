@@ -6,9 +6,6 @@ function ReportExport() {
 
   const handleExport = () => {
     try {
-      if (reportName) {
-        throw new Error('Simulated crash on submit');
-      }
       // Simulate export
       alert(`Exporting ${reportName}`);
     } catch (err) {
